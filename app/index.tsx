@@ -1,3 +1,4 @@
+import { useGame } from "@/hooks/gameHook";
 import { Link } from "expo-router";
 import {
   Image,
@@ -9,6 +10,8 @@ import {
 } from "react-native";
 
 export default function Homescreen() {
+  const { setScore } = useGame();
+
   return (
     <ImageBackground
       style={s.dino}
@@ -18,7 +21,7 @@ export default function Homescreen() {
       <View style={s.container}>
         <Text style={s.title2}></Text>
         <Link href="/game" asChild replace>
-          <TouchableOpacity style={s.button}>
+          <TouchableOpacity style={s.button} onPress={() => setScore(0)}>
             <Image source={require("@/assets/images/oi.png")} />
           </TouchableOpacity>
         </Link>
